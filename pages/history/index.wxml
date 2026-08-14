@@ -1,0 +1,31 @@
+<scroll-view class="history-page" scroll-y="{{true}}">
+  <view class="page-shell history-shell">
+    <view class="history-heading">
+      <text class="page-kicker">我的会合记录</text>
+      <text class="page-title">这台设备上，{{'\n'}}已经选定的相聚地点。</text>
+      <text class="page-description">历史仅保存在本机。后续接入登录与云端同步后，可在多个设备查看和恢复。</text>
+    </view>
+
+    <view wx:if="{{records.length}}" class="history-list">
+      <view wx:for="{{records}}" wx:key="meetingId" class="history-card">
+        <view class="history-card-topline">
+          <text class="history-status">{{item.status}}</text>
+          <text class="history-time">{{item.updatedLabel}}</text>
+        </view>
+        <text class="history-title">{{item.title}}</text>
+        <text class="history-station">{{item.station}}附近</text>
+        <text class="history-metric">{{item.district}} · {{item.commuteText}}</text>
+        <button class="history-open" bindtap="onOpenCurrentResult">查看当前会合卡片</button>
+      </view>
+    </view>
+
+    <view wx:else class="empty-history">
+      <view class="empty-mark">·</view>
+      <text class="empty-title">还没有历史会合</text>
+      <text class="empty-copy">当发起人确认一个地点后，它会出现在这里。</text>
+      <button class="action-primary empty-button" bindtap="onBackHome">去发起一场聚会</button>
+    </view>
+
+    <button wx:if="{{records.length}}" class="action-quiet" bindtap="onBackHome">回到首页</button>
+  </view>
+</scroll-view>

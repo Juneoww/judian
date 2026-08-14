@@ -1,0 +1,169 @@
+/**
+ * 功能:
+ *   呈现会合邀请卡、填写进度和参与者实时状态。
+ * 实现:
+ *   用浅色纸张卡片区分分享动作、进度和成员列表，并沿用全局按钮与进度令牌。
+ * 输入:
+ *   pages/invite/index.wxml 的成员、摘要与状态类。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS 与 app.wxss。
+ * 用法:
+ *   由 pages/invite/index.wxml 自动加载。
+ */
+
+.invite-page {
+  height: 100vh;
+  background: var(--canvas);
+}
+
+.invite-heading {
+  padding: 8rpx 4rpx 0;
+}
+
+.invite-card {
+  border-color: rgba(185, 82, 52, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.74), transparent 55%),
+    #fff5ef;
+}
+
+.invite-title,
+.invite-copy,
+.demo-link-note {
+  display: block;
+}
+
+.invite-title {
+  color: var(--terracotta);
+  font-size: 34rpx;
+  font-weight: 800;
+}
+
+.invite-copy {
+  margin-top: 14rpx;
+  color: var(--ink);
+  font-size: 25rpx;
+  line-height: 1.65;
+}
+
+.invite-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 22rpx;
+}
+
+.copy-button,
+.share-button {
+  flex: 1;
+  min-height: 76rpx;
+  border-radius: 18rpx;
+  font-size: 25rpx;
+  font-weight: 800;
+  line-height: 76rpx;
+}
+
+.copy-button {
+  color: var(--terracotta);
+  background: #fff;
+}
+
+.share-button {
+  color: #fff;
+  background: var(--terracotta);
+}
+
+.demo-link-note {
+  margin-top: 16rpx;
+  color: #9a745f;
+  font-size: 20rpx;
+  line-height: 1.5;
+}
+
+.progress-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+}
+
+.progress-count {
+  color: var(--forest);
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.member-list {
+  margin-top: 16rpx;
+}
+
+.member-row {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid rgba(36, 71, 94, 0.08);
+}
+
+.member-row:last-child {
+  border-bottom: 0;
+}
+
+.member-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58rpx;
+  height: 58rpx;
+  flex: none;
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 25rpx;
+  font-weight: 800;
+  background: var(--forest);
+}
+
+.member-avatar--host {
+  background: #b87452;
+}
+
+.member-copy {
+  min-width: 0;
+  flex: 1;
+  margin-left: 16rpx;
+}
+
+.member-name,
+.member-location {
+  display: block;
+}
+
+.member-name {
+  color: var(--ink);
+  font-size: 26rpx;
+  font-weight: 800;
+}
+
+.member-location {
+  margin-top: 4rpx;
+  color: var(--ink-soft);
+  font-size: 21rpx;
+}
+
+.member-status {
+  padding: 7rpx 11rpx;
+  border-radius: 12rpx;
+  color: #9b7b69;
+  font-size: 20rpx;
+  font-weight: 700;
+  background: #f4eee9;
+}
+
+.member-status--done {
+  color: var(--forest);
+  background: var(--forest-soft);
+}
+
+.recommendation-button {
+  margin-top: 16rpx;
+}

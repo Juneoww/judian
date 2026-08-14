@@ -1,0 +1,44 @@
+/**
+ * 功能:
+ *   呈现本机已确认会合的历史记录和空状态。
+ * 实现:
+ *   用按时间排列的纸感卡片展示会合名称、最终站点与通勤摘要。
+ * 输入:
+ *   pages/history/index.wxml 的历史数据和状态类。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS 与 app.wxss。
+ * 用法:
+ *   由 pages/history/index.wxml 自动加载。
+ */
+
+.history-page { height: 100vh; background: var(--canvas); }
+.history-shell { padding-bottom: 74rpx; }
+.history-heading { padding: 8rpx 4rpx 0; }
+.history-list { margin-top: 28rpx; }
+
+.history-card {
+  margin-top: 16rpx;
+  padding: 27rpx;
+  border: 2rpx solid rgba(36, 71, 94, 0.09);
+  border-radius: 28rpx;
+  background: #fffdf8;
+  box-shadow: 0 13rpx 30rpx rgba(36, 71, 94, 0.05);
+}
+
+.history-card-topline { display: flex; align-items: center; justify-content: space-between; }
+.history-status { padding: 7rpx 11rpx; border-radius: 12rpx; color: var(--forest); font-size: 20rpx; font-weight: 800; background: var(--forest-soft); }
+.history-time { color: var(--ink-soft); font-size: 20rpx; }
+.history-title, .history-station, .history-metric { display: block; }
+.history-title { margin-top: 18rpx; color: var(--ink-soft); font-size: 23rpx; font-weight: 700; }
+.history-station { margin-top: 5rpx; color: var(--ink); font-family: "Songti SC", "STSong", serif; font-size: 39rpx; font-weight: 800; }
+.history-metric { margin-top: 8rpx; color: var(--ink-soft); font-size: 21rpx; }
+.history-open { height: 66rpx; margin-top: 20rpx; border-radius: 16rpx; color: var(--terracotta); font-size: 23rpx; font-weight: 800; line-height: 66rpx; background: var(--terracotta-soft); }
+
+.empty-history { margin-top: 34rpx; padding: 58rpx 30rpx 40rpx; border-radius: 30rpx; text-align: center; background: #fffdf8; }
+.empty-mark { width: 78rpx; height: 78rpx; margin: 0 auto 20rpx; border-radius: 50%; color: #fff; font-size: 64rpx; line-height: 56rpx; background: var(--forest); }
+.empty-title, .empty-copy { display: block; }
+.empty-title { color: var(--ink); font-size: 31rpx; font-weight: 800; }
+.empty-copy { margin-top: 10rpx; color: var(--ink-soft); font-size: 23rpx; line-height: 1.6; }
+.empty-button { margin-top: 28rpx; }

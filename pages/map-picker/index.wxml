@@ -1,0 +1,43 @@
+<scroll-view class="picker-page" scroll-y="{{true}}">
+  <view class="page-shell picker-shell">
+    <view class="picker-heading">
+      <text class="page-kicker">地图选点</text>
+      <text class="page-title">点到哪，就从哪附近出发。</text>
+      <text class="page-description">点按地图空白区域时，会自动匹配离你手指最近的站点附近。</text>
+    </view>
+
+    <view class="picker-map">
+      <city-map
+        points="{{points}}"
+        member-pins="{{memberPins}}"
+        interactive="{{true}}"
+        bind:pointchange="onMapPointChange"
+      />
+    </view>
+
+    <view class="selected-summary">
+      <text class="selected-summary-label">已选出发区域</text>
+      <text class="selected-summary-name">{{draft.station}}附近</text>
+      <text class="selected-summary-note">{{draft.area}} · {{draft.line}}</text>
+    </view>
+
+    <view class="station-list">
+      <view
+        wx:for="{{points}}"
+        wx:key="id"
+        class="station-row {{item.isSelected ? 'station-row--selected' : ''}}"
+        data-point-id="{{item.id}}"
+        bindtap="onStationSelect"
+      >
+        <view class="station-row-dot"></view>
+        <view class="station-row-copy">
+          <text class="station-row-name">{{item.station}}</text>
+          <text class="station-row-area">{{item.area}}</text>
+        </view>
+        <text wx:if="{{item.isSelected}}" class="station-row-selected">当前</text>
+      </view>
+    </view>
+
+    <button class="action-primary picker-confirm" bindtap="onConfirm">确认这个出发区域</button>
+  </view>
+</scroll-view>

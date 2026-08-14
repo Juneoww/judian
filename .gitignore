@@ -1,0 +1,7 @@
+# 本地依赖、微信开发者工具缓存与隔离工作区不纳入版本控制。
+node_modules/
+miniprogram_npm/
+.worktrees/
+worktrees/
+.DS_Store
+*.log

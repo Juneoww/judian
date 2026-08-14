@@ -1,0 +1,42 @@
+<scroll-view class="final-page" scroll-y="{{true}}">
+  <view class="page-shell final-shell">
+    <view class="final-heading">
+      <text class="page-kicker">会合地点 · {{finalSummary.status}}</text>
+      <text class="page-title">就约在{{finalSummary.station}}附近。</text>
+      <text class="page-description">{{finalSummary.district}} · {{finalSummary.foodText}}</text>
+    </view>
+
+    <view class="final-map">
+      <city-map
+        points="{{points}}"
+        member-pins="{{memberPins}}"
+        candidate-pins="{{candidatePins}}"
+        compact="{{true}}"
+      />
+    </view>
+
+    <view class="section-card final-summary-card">
+      <view class="final-summary-row">
+        <view>
+          <text class="final-summary-label">大家的会合点</text>
+          <text class="final-summary-station">{{finalSummary.station}}</text>
+        </view>
+        <text class="final-status-badge">{{finalSummary.status}}</text>
+      </view>
+      <text class="final-summary-metric">{{finalSummary.commuteText}}</text>
+      <text class="final-summary-reason">{{finalSummary.reason}}</text>
+    </view>
+
+    <view class="share-card">
+      <text class="share-card-kicker">MEET AT</text>
+      <text class="share-card-title">{{finalSummary.station}}</text>
+      <text class="share-card-copy">{{finalSummary.title}} · {{finalSummary.district}}</text>
+      <view class="share-card-route"><text>广佛会合 · 已选定</text><text>聚点</text></view>
+    </view>
+
+    <button class="action-primary" bindtap="onOpenNavigation">{{finalSummary.navigationLabel}}</button>
+    <button class="action-secondary final-share-button" open-type="share">分享会合卡片</button>
+    <button class="action-quiet" bindtap="onOpenHistory">查看本机历史</button>
+    <button class="home-link" bindtap="onBackHome">回到首页</button>
+  </view>
+</scroll-view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "地图选点",
+  "navigationBarBackgroundColor": "#FFFDF8",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "city-map": "../../components/city-map/index"
+  }
+}

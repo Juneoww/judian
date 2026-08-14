@@ -1,0 +1,118 @@
+/**
+ * 功能:
+ *   强调地图直接选点、位置隐私和提交状态的填写页视觉。
+ * 实现:
+ *   通过可视地图卡、当前站点摘要和可切换的隐私选项承载参与者填写流程。
+ * 输入:
+ *   pages/submit/index.wxml 的地图、草稿和隐私状态类。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS、app.wxss 和 city-map 组件样式。
+ * 用法:
+ *   由 pages/submit/index.wxml 自动加载。
+ */
+
+.submit-page {
+  height: 100vh;
+  background: var(--canvas);
+}
+
+.submit-heading {
+  padding: 8rpx 4rpx 2rpx;
+}
+
+.map-wrapper {
+  margin-top: 26rpx;
+}
+
+.selected-place-card {
+  margin-top: 20rpx;
+  border-color: rgba(185, 82, 52, 0.16);
+  background: #fff9f5;
+}
+
+.selected-place-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.selected-marker {
+  padding: 8rpx 13rpx;
+  border-radius: 14rpx;
+  color: var(--terracotta);
+  font-size: 21rpx;
+  font-weight: 800;
+  background: var(--terracotta-soft);
+}
+
+.map-picker-button {
+  height: 68rpx;
+  margin-top: 18rpx;
+  border: 2rpx solid rgba(185, 82, 52, 0.18);
+  border-radius: 16rpx;
+  color: var(--terracotta);
+  font-size: 24rpx;
+  font-weight: 800;
+  line-height: 64rpx;
+  background: #fff;
+}
+
+.privacy-list {
+  margin-top: 16rpx;
+}
+
+.privacy-option {
+  display: flex;
+  gap: 14rpx;
+  align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid rgba(36, 71, 94, 0.08);
+}
+
+.privacy-option:last-child {
+  border-bottom: 0;
+}
+
+.privacy-dot {
+  width: 19rpx;
+  height: 19rpx;
+  flex: none;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+  background: #d7e1e1;
+  box-shadow: 0 0 0 2rpx rgba(36, 71, 94, 0.14);
+}
+
+.privacy-option--active .privacy-dot {
+  background: var(--forest);
+  box-shadow: 0 0 0 2rpx rgba(72, 111, 89, 0.32);
+}
+
+.privacy-title,
+.privacy-note {
+  display: block;
+}
+
+.privacy-title {
+  color: var(--ink);
+  font-size: 26rpx;
+  font-weight: 800;
+}
+
+.privacy-note {
+  margin-top: 4rpx;
+  color: var(--ink-soft);
+  font-size: 21rpx;
+}
+
+.submit-progress {
+  margin: 22rpx 0;
+  padding: 18rpx 22rpx;
+  border-radius: 18rpx;
+  color: var(--forest);
+  font-size: 23rpx;
+  font-weight: 700;
+  background: var(--forest-soft);
+}

@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/create/index",
+    "pages/invite/index",
+    "pages/submit/index",
+    "pages/map-picker/index",
+    "pages/recommendations/index",
+    "pages/final/index",
+    "pages/history/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "聚点",
+    "navigationBarBackgroundColor": "#FFFDF8",
+    "backgroundColor": "#F6F7F4",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

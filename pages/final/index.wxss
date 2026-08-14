@@ -1,0 +1,64 @@
+/**
+ * 功能:
+ *   呈现已确认会合地点、导航入口与可分享的会合卡片。
+ * 实现:
+ *   用陶橙与海湾蓝的对比突出最终站点，并以海报式卡片承载分享信息。
+ * 输入:
+ *   pages/final/index.wxml 的最终摘要和操作区域类。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS、app.wxss 和 city-map 组件样式。
+ * 用法:
+ *   由 pages/final/index.wxml 自动加载。
+ */
+
+.final-page { height: 100vh; background: var(--canvas); }
+.final-shell { padding-bottom: 78rpx; }
+.final-heading { padding: 8rpx 4rpx 0; }
+.final-map { margin-top: 24rpx; }
+
+.final-summary-card {
+  border-color: rgba(185, 82, 52, 0.18);
+  background: #fff8f3;
+}
+
+.final-summary-row { display: flex; align-items: flex-start; justify-content: space-between; }
+.final-summary-label, .final-summary-station, .final-summary-metric, .final-summary-reason { display: block; }
+.final-summary-label { color: var(--terracotta); font-size: 21rpx; font-weight: 800; letter-spacing: 1rpx; }
+.final-summary-station { margin-top: 8rpx; color: var(--ink); font-family: "Songti SC", "STSong", serif; font-size: 42rpx; font-weight: 800; }
+.final-status-badge { padding: 8rpx 13rpx; border-radius: 13rpx; color: #fff; font-size: 21rpx; font-weight: 800; background: var(--terracotta); }
+.final-summary-metric { margin-top: 20rpx; color: var(--ink); font-size: 24rpx; font-weight: 800; }
+.final-summary-reason { margin-top: 9rpx; color: var(--ink-soft); font-size: 22rpx; line-height: 1.6; }
+
+.share-card {
+  position: relative;
+  overflow: hidden;
+  margin-top: 24rpx;
+  padding: 42rpx 34rpx 30rpx;
+  border-radius: 30rpx;
+  color: #fffdf8;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(243, 196, 131, 0.72), transparent 21%),
+    linear-gradient(138deg, #24475e 0%, #2d7185 53%, #486f59 100%);
+  box-shadow: 0 20rpx 38rpx rgba(36, 71, 94, 0.2);
+}
+
+.share-card::after {
+  position: absolute;
+  right: -52rpx;
+  bottom: -72rpx;
+  width: 230rpx;
+  height: 230rpx;
+  border: 18rpx solid rgba(255, 253, 248, 0.14);
+  border-radius: 50%;
+  content: '';
+}
+
+.share-card-kicker, .share-card-title, .share-card-copy { display: block; position: relative; z-index: 1; }
+.share-card-kicker { font-size: 20rpx; font-weight: 800; letter-spacing: 3rpx; opacity: 0.8; }
+.share-card-title { margin-top: 15rpx; font-family: "Songti SC", "STSong", serif; font-size: 54rpx; font-weight: 800; }
+.share-card-copy { margin-top: 9rpx; font-size: 24rpx; opacity: 0.9; }
+.share-card-route { position: relative; z-index: 1; display: flex; justify-content: space-between; margin-top: 38rpx; padding-top: 16rpx; border-top: 1rpx solid rgba(255, 253, 248, 0.25); font-size: 20rpx; }
+.final-share-button { margin-top: 16rpx; }
+.home-link { display: block; margin: 2rpx auto 0; color: var(--ink-soft); font-size: 23rpx; text-align: center; }

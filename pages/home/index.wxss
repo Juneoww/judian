@@ -1,0 +1,149 @@
+.home-page {
+  min-height: 100vh;
+  padding: 48rpx 32rpx 64rpx;
+  box-sizing: border-box;
+  background: var(--paper);
+}
+
+.hero {
+  padding: 12rpx 6rpx 36rpx;
+}
+
+.eyebrow,
+.meeting-label {
+  display: block;
+  color: var(--terracotta);
+  font-size: 22rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+}
+
+.title {
+  display: block;
+  margin-top: 18rpx;
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 54rpx;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.description {
+  display: block;
+  margin-top: 22rpx;
+  color: var(--ink-soft);
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+.map-preview {
+  position: relative;
+  height: 440rpx;
+  overflow: hidden;
+  border: 2rpx solid rgba(36, 71, 94, 0.1);
+  border-radius: 38rpx;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.5), transparent 48%),
+    linear-gradient(135deg, #eaf4f5, #dcebef);
+  box-shadow: 0 24rpx 48rpx rgba(36, 71, 94, 0.1);
+}
+
+.map-sun {
+  position: absolute;
+  right: 62rpx;
+  top: 52rpx;
+  width: 98rpx;
+  height: 98rpx;
+  border-radius: 50%;
+  background: rgba(255, 250, 220, 0.8);
+  box-shadow: 0 0 0 32rpx rgba(255, 255, 255, 0.22);
+}
+
+.map-line {
+  position: absolute;
+  height: 12rpx;
+  border-radius: 999rpx;
+  transform: rotate(-19deg);
+}
+
+.line-main {
+  left: 62rpx;
+  top: 210rpx;
+  width: 515rpx;
+  background: #2d7185;
+}
+
+.line-branch {
+  left: 100rpx;
+  top: 278rpx;
+  width: 455rpx;
+  background: #b87452;
+  transform: rotate(18deg);
+}
+
+.map-pin {
+  position: absolute;
+  z-index: 2;
+  padding: 9rpx 14rpx;
+  border-radius: 14rpx;
+  color: var(--ink);
+  font-size: 22rpx;
+  font-weight: 700;
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 8rpx 18rpx rgba(36, 71, 94, 0.12);
+}
+
+.pin-west { left: 62rpx; top: 244rpx; }
+.pin-center { left: 300rpx; top: 180rpx; }
+.pin-east { right: 68rpx; top: 116rpx; }
+
+.actions {
+  margin-top: 34rpx;
+}
+
+.primary-action,
+.secondary-action {
+  min-height: 92rpx;
+  border-radius: 24rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 92rpx;
+}
+
+.history-link {
+  display: block;
+  margin-top: 26rpx;
+  color: var(--forest);
+  font-size: 26rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.primary-action {
+  color: #fff;
+  background: var(--terracotta);
+  box-shadow: 0 14rpx 28rpx rgba(185, 82, 52, 0.23);
+}
+
+.secondary-action {
+  margin-top: 18rpx;
+  color: var(--ink);
+  border: 2rpx solid rgba(36, 71, 94, 0.15);
+  background: #fff;
+}
+
+.meeting-note {
+  margin-top: 34rpx;
+  padding: 24rpx;
+  border-radius: 22rpx;
+  background: #f4f8f5;
+}
+
+.meeting-id {
+  display: block;
+  margin-top: 8rpx;
+  color: var(--forest);
+  font-size: 26rpx;
+  font-weight: 700;
+}

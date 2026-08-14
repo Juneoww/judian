@@ -1,0 +1,19 @@
+{
+  "description": "聚点原生微信小程序项目配置",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.7.5",
+  "appid": "touristappid",
+  "projectname": "judian",
+  "miniprogramRoot": "./",
+  "condition": {}
+}

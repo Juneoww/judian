@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "会合已选定",
+  "navigationBarBackgroundColor": "#FFFDF8",
+  "navigationBarTextStyle": "black",
+  "enableShareAppMessage": true,
+  "usingComponents": {
+    "city-map": "../../components/city-map/index"
+  }
+}

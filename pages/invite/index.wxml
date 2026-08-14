@@ -1,0 +1,47 @@
+<scroll-view class="invite-page" scroll-y="{{true}}">
+  <view class="page-shell">
+    <view class="invite-heading">
+      <text class="page-kicker">02 · 邀请大家</text>
+      <text class="page-title">把链接发出去，{{'\n'}}每个人只填自己的位置。</text>
+      <text class="page-description">默认采用模糊公开：其他参与者只会看到你在某个地铁站附近，不显示详细住址。</text>
+    </view>
+
+    <view class="section-card invite-card">
+      <text class="invite-title">{{summary.title}}</text>
+      <text class="invite-copy">{{inviteText}}</text>
+      <view class="invite-actions">
+        <button class="copy-button" bindtap="onCopyInvite">复制邀请文案</button>
+        <button class="share-button" open-type="share">微信分享</button>
+      </view>
+      <text class="demo-link-note">当前为本地演示邀请；接入 CloudBase 后会生成真实场次链接。</text>
+    </view>
+
+    <view class="section-card section-card--mint">
+      <view class="progress-topline">
+        <view>
+          <text class="section-label">{{summary.progressText}}</text>
+          <text class="section-note">{{summary.remainingText}}</text>
+        </view>
+        <text class="progress-count">{{summary.submitted}}/{{summary.expected}}</text>
+      </view>
+      <view class="progress-bar"><view class="progress-fill" style="width: {{summary.submitted / summary.expected * 100}}%;"></view></view>
+    </view>
+
+    <view class="section-card member-card">
+      <text class="section-label">参与者状态</text>
+      <view class="member-list">
+        <view wx:for="{{members}}" wx:key="id" class="member-row">
+          <view class="member-avatar {{item.role === 'host' ? 'member-avatar--host' : ''}}">{{item.initial}}</view>
+          <view class="member-copy">
+            <text class="member-name">{{item.name}}{{item.role === 'host' ? ' · 发起人' : ''}}</text>
+            <text class="member-location">{{item.locationText}}</text>
+          </view>
+          <text class="member-status {{item.submitted ? 'member-status--done' : ''}}">{{item.statusText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <button class="action-primary" bindtap="onGoSubmit">我来填写出发点</button>
+    <button class="action-secondary recommendation-button" bindtap="onViewRecommendations">先看暂定推荐</button>
+  </view>
+</scroll-view>

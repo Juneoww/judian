@@ -1,0 +1,56 @@
+<scroll-view class="submit-page" scroll-y="{{true}}">
+  <view class="page-shell">
+    <view class="submit-heading">
+      <text class="page-kicker">03 · 填写出发点</text>
+      <text class="page-title">你从哪里出发？</text>
+      <text class="page-description">点击地图空白区域或任一站点，系统会记录为“地铁站附近”的模糊出发区域。</text>
+    </view>
+
+    <view class="map-wrapper">
+      <city-map
+        points="{{points}}"
+        member-pins="{{memberPins}}"
+        interactive="{{true}}"
+        bind:pointchange="onMapPointChange"
+      />
+    </view>
+
+    <view class="section-card selected-place-card">
+      <view class="selected-place-topline">
+        <view>
+          <text class="section-label">当前选择 · {{draft.station}}附近</text>
+          <text class="section-note">{{draft.area}} · {{draft.line}}</text>
+        </view>
+        <text class="selected-marker">已选</text>
+      </view>
+      <button class="map-picker-button" bindtap="onOpenMapPicker">展开地图精细选择</button>
+    </view>
+
+    <view class="section-card">
+      <text class="section-label">位置怎样展示给其他人？</text>
+      <text class="section-note">系统只用位置参与通勤测算；你可以随时修改展示范围。</text>
+      <view class="privacy-list">
+        <view
+          wx:for="{{privacyOptions}}"
+          wx:key="value"
+          class="privacy-option {{draft.privacy === item.value ? 'privacy-option--active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onPrivacyChange"
+        >
+          <view class="privacy-dot"></view>
+          <view>
+            <text class="privacy-title">{{item.label}}</text>
+            <text class="privacy-note">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="submit-progress">
+      <text>本场已有 {{summary.submitted}} 人填写；{{summary.remainingText}}</text>
+    </view>
+
+    <button class="action-primary" bindtap="onSubmitLocation">提交我的出发点</button>
+    <button class="action-quiet" bindtap="onViewRecommendations">先看暂定推荐</button>
+  </view>
+</scroll-view>

@@ -1,0 +1,85 @@
+/**
+ * 功能:
+ *   呈现暂定/实时会合推荐、策略切换、候选地点对比与发起人确认动作。
+ * 实现:
+ *   使用地图缩略图、横向策略胶囊和高信息密度候选卡片组织推荐决策。
+ * 输入:
+ *   pages/recommendations/index.wxml 的候选、策略、通勤上限和状态类。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS、app.wxss 和 city-map 组件样式。
+ * 用法:
+ *   由 pages/recommendations/index.wxml 自动加载。
+ */
+
+.recommendation-page { height: 100vh; background: var(--canvas); }
+.recommendation-shell { padding-bottom: 74rpx; }
+.recommendation-heading { padding: 8rpx 4rpx 0; }
+
+.status-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24rpx;
+  padding: 21rpx 24rpx;
+  border-radius: 24rpx;
+  color: var(--forest);
+  background: var(--forest-soft);
+}
+
+.status-banner--provisional { color: #99603d; background: #fff0e4; }
+.status-title, .status-note { display: block; }
+.status-title { font-size: 27rpx; font-weight: 800; }
+.status-note { margin-top: 5rpx; font-size: 21rpx; }
+.status-count { font-size: 34rpx; font-weight: 800; }
+.recommendation-map { margin-top: 18rpx; }
+.controls-card { padding-right: 0; padding-bottom: 20rpx; }
+.controls-card .section-label, .cap-row { margin-left: 28rpx; margin-right: 28rpx; }
+.strategy-scroll { width: 100%; margin-top: 18rpx; white-space: nowrap; }
+.strategy-inline-row { display: inline-flex; gap: 12rpx; padding: 0 28rpx; }
+
+.strategy-inline {
+  padding: 13rpx 17rpx;
+  border: 2rpx solid rgba(36, 71, 94, 0.11);
+  border-radius: 16rpx;
+  color: var(--ink-soft);
+  font-size: 22rpx;
+  font-weight: 700;
+  background: #fff;
+}
+
+.strategy-inline--active { border-color: rgba(185, 82, 52, 0.35); color: var(--terracotta); background: var(--terracotta-soft); }
+.cap-row { display: flex; gap: 16rpx; align-items: flex-start; margin-top: 22rpx; }
+.cap-label { padding-top: 6rpx; color: var(--ink); font-size: 24rpx; font-weight: 800; white-space: nowrap; }
+.cap-options { display: flex; flex-wrap: wrap; gap: 12rpx; }
+.cap-option { padding: 7rpx 10rpx; border-radius: 12rpx; color: var(--ink-soft); font-size: 20rpx; background: #f5f7f5; }
+.cap-option--active { color: var(--forest); font-weight: 800; background: var(--forest-soft); }
+.candidate-list { margin-top: 22rpx; }
+
+.candidate-card {
+  margin-top: 16rpx;
+  padding: 26rpx;
+  border: 2rpx solid rgba(36, 71, 94, 0.1);
+  border-radius: 28rpx;
+  background: #fffdf8;
+  box-shadow: 0 12rpx 28rpx rgba(36, 71, 94, 0.045);
+}
+
+.candidate-card--selected { border-color: rgba(185, 82, 52, 0.35); background: #fff8f3; box-shadow: 0 16rpx 32rpx rgba(185, 82, 52, 0.1); }
+.candidate-topline { display: flex; align-items: center; justify-content: space-between; }
+.candidate-rank { padding: 7rpx 12rpx; border-radius: 12rpx; color: var(--terracotta); font-size: 20rpx; font-weight: 800; background: var(--terracotta-soft); }
+.candidate-choice { color: var(--ink-soft); font-size: 21rpx; font-weight: 700; }
+.candidate-card--selected .candidate-choice { color: var(--terracotta); }
+.candidate-station, .candidate-district, .candidate-own-time, .candidate-reason { display: block; }
+.candidate-station { margin-top: 17rpx; color: var(--ink); font-family: "Songti SC", "STSong", serif; font-size: 39rpx; font-weight: 800; }
+.candidate-district { margin-top: 2rpx; color: var(--ink-soft); font-size: 23rpx; }
+.candidate-metrics { display: flex; flex-wrap: wrap; gap: 14rpx; margin-top: 17rpx; color: var(--ink); font-size: 22rpx; font-weight: 700; }
+.candidate-tags { display: flex; flex-wrap: wrap; gap: 10rpx; margin-top: 14rpx; }
+.candidate-tag { padding: 7rpx 10rpx; border-radius: 11rpx; font-size: 20rpx; font-weight: 700; }
+.candidate-tag--food { color: #7d614b; background: #f7eadb; }
+.candidate-tag--safe { color: var(--forest); background: var(--forest-soft); }
+.candidate-tag--warning { color: #a65b3f; background: #fdebe0; }
+.candidate-own-time { margin-top: 16rpx; color: var(--forest); font-size: 22rpx; font-weight: 800; }
+.candidate-reason { margin-top: 10rpx; color: var(--ink-soft); font-size: 22rpx; line-height: 1.6; }
+.host-note { margin: 22rpx 0 16rpx; color: var(--ink-soft); font-size: 21rpx; line-height: 1.55; text-align: center; }

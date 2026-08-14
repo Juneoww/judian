@@ -1,0 +1,229 @@
+/**
+ * 功能:
+ *   定义可复用的广佛地图卡片、线路、站点与人物标记视觉。
+ * 实现:
+ *   通过浅色地形、细网格、地铁色带和相对定位标记形成无外部密钥依赖的地图体验。
+ * 输入:
+ *   city-map 组件 WXML 中的状态类和相对坐标样式。
+ * 输出:
+ *   组件局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS 和 app.wxss 的颜色变量。
+ * 用法:
+ *   由 components/city-map/index.wxml 自动加载。
+ */
+
+.city-map {
+  overflow: hidden;
+  border: 2rpx solid rgba(36, 71, 94, 0.1);
+  border-radius: 32rpx;
+  background: #f7fbfb;
+  box-shadow: 0 18rpx 38rpx rgba(36, 71, 94, 0.08);
+}
+
+.map-canvas {
+  position: relative;
+  height: 500rpx;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 12%, rgba(255, 250, 220, 0.9) 0, rgba(255, 250, 220, 0.48) 14%, transparent 34%),
+    linear-gradient(135deg, #e8f3f4 0%, #dbeaf0 58%, #e9f0e8 100%);
+}
+
+.city-map--compact .map-canvas {
+  height: 350rpx;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(rgba(64, 114, 130, 0.12) 1rpx, transparent 1rpx),
+    linear-gradient(90deg, rgba(64, 114, 130, 0.12) 1rpx, transparent 1rpx);
+  background-size: 48rpx 48rpx;
+}
+
+.map-bay {
+  position: absolute;
+  border: 20rpx solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+}
+
+.bay-one {
+  width: 330rpx;
+  height: 330rpx;
+  right: -160rpx;
+  bottom: -140rpx;
+}
+
+.bay-two {
+  width: 240rpx;
+  height: 240rpx;
+  left: -150rpx;
+  top: -105rpx;
+}
+
+.metro-line {
+  position: absolute;
+  z-index: 1;
+  height: 12rpx;
+  border-radius: 999rpx;
+  box-shadow: 0 2rpx 0 rgba(255, 255, 255, 0.55);
+}
+
+.metro-line--main {
+  left: 10%;
+  top: 57%;
+  width: 78%;
+  background: #2d7185;
+  transform: rotate(-16deg);
+}
+
+.metro-line--branch {
+  left: 23%;
+  top: 66%;
+  width: 55%;
+  background: #b87452;
+  transform: rotate(27deg);
+}
+
+.metro-line--ring {
+  left: 50%;
+  top: 18%;
+  width: 36%;
+  background: #7c9a65;
+  transform: rotate(82deg);
+}
+
+.station-marker,
+.member-pin,
+.candidate-pin {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+}
+
+.station-marker {
+  display: flex;
+  align-items: center;
+  max-width: 152rpx;
+  padding: 5rpx 9rpx 5rpx 6rpx;
+  border: 1rpx solid rgba(36, 71, 94, 0.08);
+  border-radius: 16rpx;
+  background: rgba(255, 253, 248, 0.88);
+  box-shadow: 0 7rpx 14rpx rgba(36, 71, 94, 0.1);
+}
+
+.station-marker--selected {
+  z-index: 5;
+  border-color: rgba(185, 82, 52, 0.36);
+  background: #fff7f2;
+  box-shadow: 0 8rpx 20rpx rgba(185, 82, 52, 0.2);
+}
+
+.station-dot {
+  width: 13rpx;
+  height: 13rpx;
+  flex: none;
+  margin-right: 6rpx;
+  border: 3rpx solid #fff;
+  border-radius: 50%;
+  background: #2d7185;
+  box-shadow: 0 0 0 1rpx rgba(36, 71, 94, 0.26);
+}
+
+.station-marker--selected .station-dot {
+  background: var(--terracotta);
+}
+
+.station-name {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 20rpx;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-pin,
+.candidate-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38rpx;
+  height: 38rpx;
+  border: 3rpx solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 19rpx;
+  font-weight: 800;
+  box-shadow: 0 5rpx 12rpx rgba(36, 71, 94, 0.18);
+}
+
+.member-pin {
+  z-index: 4;
+  margin-left: 30rpx;
+  margin-top: -28rpx;
+  background: var(--forest);
+}
+
+.member-pin--host {
+  background: #b87452;
+}
+
+.candidate-pin {
+  z-index: 6;
+  width: 44rpx;
+  height: 44rpx;
+  margin-left: -28rpx;
+  margin-top: 28rpx;
+  background: var(--terracotta);
+}
+
+.candidate-pin--selected {
+  box-shadow: 0 0 0 10rpx rgba(185, 82, 52, 0.16), 0 5rpx 12rpx rgba(36, 71, 94, 0.18);
+}
+
+.map-hint {
+  position: absolute;
+  z-index: 8;
+  right: 18rpx;
+  bottom: 18rpx;
+  max-width: 340rpx;
+  padding: 12rpx 16rpx;
+  border: 1rpx solid rgba(36, 71, 94, 0.08);
+  border-radius: 18rpx;
+  color: var(--ink);
+  font-size: 21rpx;
+  font-weight: 700;
+  background: rgba(255, 253, 248, 0.9);
+  box-shadow: 0 8rpx 18rpx rgba(36, 71, 94, 0.08);
+}
+
+.map-legend {
+  display: flex;
+  gap: 24rpx;
+  align-items: center;
+  padding: 18rpx 22rpx;
+  background: rgba(255, 253, 248, 0.92);
+}
+
+.legend-item {
+  display: flex;
+  gap: 8rpx;
+  align-items: center;
+  color: var(--ink-soft);
+  font-size: 20rpx;
+}
+
+.legend-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+}
+
+.legend-dot--member { background: var(--forest); }
+.legend-dot--selected { background: var(--terracotta); }
+.legend-dot--candidate { background: #b87452; }

@@ -1,0 +1,48 @@
+<view class="city-map {{compact ? 'city-map--compact' : ''}}">
+  <view class="map-canvas" bindtap="handleMapTap" aria-label="广佛会合地点地图">
+    <view class="map-grid"></view>
+    <view class="map-bay bay-one"></view>
+    <view class="map-bay bay-two"></view>
+    <view class="metro-line metro-line--main"></view>
+    <view class="metro-line metro-line--branch"></view>
+    <view class="metro-line metro-line--ring"></view>
+
+    <view
+      wx:for="{{points}}"
+      wx:key="id"
+      class="station-marker {{item.isSelected ? 'station-marker--selected' : ''}}"
+      style="left: {{item.x}}%; top: {{item.y}}%;"
+      data-point-id="{{item.id}}"
+      catchtap="handlePointTap"
+    >
+      <view class="station-dot"></view>
+      <text class="station-name">{{item.station}}</text>
+    </view>
+
+    <view
+      wx:for="{{memberPins}}"
+      wx:key="id"
+      class="member-pin {{item.role === 'host' ? 'member-pin--host' : ''}}"
+      style="left: {{item.x}}%; top: {{item.y}}%;"
+    >
+      <text>{{item.initial}}</text>
+    </view>
+
+    <view
+      wx:for="{{candidatePins}}"
+      wx:key="id"
+      class="candidate-pin {{item.isSelected ? 'candidate-pin--selected' : ''}}"
+      style="left: {{item.x}}%; top: {{item.y}}%;"
+    >
+      <text>{{item.rank || '荐'}}</text>
+    </view>
+
+    <view wx:if="{{interactive}}" class="map-hint">点地图或站点，选择你的出发区域</view>
+  </view>
+
+  <view class="map-legend">
+    <view class="legend-item"><view class="legend-dot legend-dot--member"></view><text>已填写</text></view>
+    <view class="legend-item"><view class="legend-dot legend-dot--selected"></view><text>当前选择</text></view>
+    <view wx:if="{{candidatePins.length}}" class="legend-item"><view class="legend-dot legend-dot--candidate"></view><text>推荐点</text></view>
+  </view>
+</view>

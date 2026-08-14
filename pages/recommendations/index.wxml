@@ -1,0 +1,84 @@
+<scroll-view class="recommendation-page" scroll-y="{{true}}">
+  <view class="page-shell recommendation-shell">
+    <view class="recommendation-heading">
+      <text class="page-kicker">04 · 聚集地推荐</text>
+      <text class="page-title">{{view.isProvisional ? '先给一版暂定答案。' : '为大家找到更合适的会合点。'}}</text>
+      <text class="page-description">推荐依据已提交的出发区域实时刷新。还有人没填写时，结果会明确标注为暂定。</text>
+    </view>
+
+    <view class="status-banner {{view.isProvisional ? 'status-banner--provisional' : ''}}">
+      <view>
+        <text class="status-title">{{view.provisionalText}}</text>
+        <text class="status-note">{{view.progressText}} · {{view.strategyLabel}}</text>
+      </view>
+      <text class="status-count">{{view.submitted}}/{{view.expected}}</text>
+    </view>
+
+    <view class="recommendation-map">
+      <city-map
+        points="{{points}}"
+        member-pins="{{memberPins}}"
+        candidate-pins="{{candidatePins}}"
+        compact="{{true}}"
+      />
+    </view>
+
+    <view class="section-card controls-card">
+      <text class="section-label">这次优先考虑</text>
+      <scroll-view class="strategy-scroll" scroll-x="{{true}}" show-scrollbar="{{false}}">
+        <view class="strategy-inline-row">
+          <view
+            wx:for="{{strategyOptions}}"
+            wx:key="value"
+            class="strategy-inline {{activeStrategy === item.value ? 'strategy-inline--active' : ''}}"
+            data-value="{{item.value}}"
+            bindtap="onStrategyChange"
+          >{{item.label}}</view>
+        </view>
+      </scroll-view>
+      <view class="cap-row">
+        <text class="cap-label">最远通勤</text>
+        <view class="cap-options">
+          <text
+            wx:for="{{commuteCapOptions}}"
+            wx:key="value"
+            class="cap-option {{activeCap === item.value ? 'cap-option--active' : ''}}"
+            data-value="{{item.value}}"
+            bindtap="onCapChange"
+          >{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="candidate-list">
+      <view
+        wx:for="{{view.recommendations}}"
+        wx:key="id"
+        class="candidate-card {{item.isSelected ? 'candidate-card--selected' : ''}}"
+        data-candidate-id="{{item.id}}"
+        bindtap="onCandidateSelect"
+      >
+        <view class="candidate-topline">
+          <view class="candidate-rank">{{item.rankLabel}}</view>
+          <text class="candidate-choice">{{item.isSelected ? '当前选择' : '点击选择'}}</text>
+        </view>
+        <text class="candidate-station">{{item.station}}</text>
+        <text class="candidate-district">{{item.district}}</text>
+        <view class="candidate-metrics">
+          <text>{{item.commuteText}}</text>
+          <text>{{item.transferText}}</text>
+        </view>
+        <view class="candidate-tags">
+          <text class="candidate-tag candidate-tag--food">{{item.foodLabel}} · {{item.foodScore}}</text>
+          <text class="candidate-tag {{item.isWithinCap ? 'candidate-tag--safe' : 'candidate-tag--warning'}}">{{item.capText}}</text>
+        </view>
+        <text wx:if="{{item.ownTimeText}}" class="candidate-own-time">{{item.ownTimeText}}</text>
+        <text class="candidate-reason">{{item.reason}}</text>
+      </view>
+    </view>
+
+    <view class="host-note">最终地点由发起人选定；本地演示中可直接预览确认后的导航与分享卡片。</view>
+    <button class="action-primary" bindtap="onConfirmCandidate">发起人确认当前地点</button>
+    <button class="action-quiet" bindtap="onBackToInvite">返回邀请页</button>
+  </view>
+</scroll-view>

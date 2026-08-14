@@ -1,0 +1,94 @@
+/**
+ * 功能:
+ *   呈现发起人设置会合策略的分区表单与浅色纸感信息卡片。
+ * 实现:
+ *   基于全局视觉令牌补充输入框、策略列表和页面底部操作样式。
+ * 输入:
+ *   pages/create/index.wxml 的状态类和全局 app.wxss 变量。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS 与 app.wxss。
+ * 用法:
+ *   由 pages/create/index.wxml 自动加载。
+ */
+
+.create-page {
+  height: 100vh;
+  background: var(--canvas);
+}
+
+.create-heading {
+  padding: 8rpx 4rpx 4rpx;
+}
+
+.meeting-name-input {
+  height: 86rpx;
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  border-radius: 18rpx;
+  color: var(--ink);
+  font-size: 30rpx;
+  font-weight: 700;
+  background: #f8faf8;
+}
+
+.strategy-list {
+  margin-top: 18rpx;
+}
+
+.strategy-option {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(36, 71, 94, 0.09);
+}
+
+.strategy-option:last-child {
+  border-bottom: 0;
+}
+
+.strategy-option--active .strategy-name {
+  color: var(--terracotta);
+}
+
+.strategy-dot {
+  width: 19rpx;
+  height: 19rpx;
+  flex: none;
+  margin-right: 16rpx;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+  background: #d7e1e1;
+  box-shadow: 0 0 0 2rpx rgba(36, 71, 94, 0.14);
+}
+
+.strategy-option--active .strategy-dot {
+  background: var(--terracotta);
+  box-shadow: 0 0 0 2rpx rgba(185, 82, 52, 0.32);
+}
+
+.strategy-copy {
+  min-width: 0;
+}
+
+.strategy-name,
+.strategy-description {
+  display: block;
+}
+
+.strategy-name {
+  color: var(--ink);
+  font-size: 27rpx;
+  font-weight: 800;
+}
+
+.strategy-description {
+  margin-top: 5rpx;
+  color: var(--ink-soft);
+  font-size: 22rpx;
+}
+
+.continue-button {
+  margin-top: 30rpx;
+}

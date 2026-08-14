@@ -1,0 +1,162 @@
+/**
+ * 功能:
+ *   定义“聚点”小程序全局的浅色岭南导览视觉变量与基础排版。
+ * 实现:
+ *   将地图、纸感信息层、陶橙确认动作和高对比文字收敛为可复用的 CSS 变量。
+ * 输入:
+ *   各页面与组件的 WXSS 变量引用。
+ * 输出:
+ *   全局页面背景、字体和颜色令牌。
+ * 依赖:
+ *   微信小程序 WXSS。
+ * 用法:
+ *   由 app.json 全局加载，页面使用 var(--token) 访问。
+ */
+
+page {
+  --paper: #fffdf8;
+  --canvas: #f6f7f4;
+  --map-mist: #e9f2f5;
+  --ink: #24475e;
+  --ink-soft: #526b7b;
+  --terracotta: #b95234;
+  --terracotta-soft: #f8e7df;
+  --forest: #486f59;
+  --forest-soft: #e1eee5;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--canvas);
+}
+
+button::after {
+  border: 0;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 34rpx 30rpx 58rpx;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 98% 0%, rgba(246, 219, 193, 0.52), transparent 28%),
+    var(--canvas);
+}
+
+.page-kicker {
+  display: block;
+  color: var(--terracotta);
+  font-size: 21rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+}
+
+.page-title {
+  display: block;
+  margin-top: 14rpx;
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 48rpx;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.page-description {
+  display: block;
+  margin-top: 15rpx;
+  color: var(--ink-soft);
+  font-size: 26rpx;
+  line-height: 1.65;
+}
+
+.section-card {
+  margin-top: 26rpx;
+  padding: 28rpx;
+  border: 2rpx solid rgba(36, 71, 94, 0.08);
+  border-radius: 28rpx;
+  background: rgba(255, 253, 248, 0.93);
+  box-shadow: 0 14rpx 34rpx rgba(36, 71, 94, 0.055);
+}
+
+.section-card--mint {
+  border-color: rgba(72, 111, 89, 0.13);
+  background: var(--forest-soft);
+}
+
+.section-label {
+  display: block;
+  color: var(--ink);
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.section-note {
+  display: block;
+  margin-top: 8rpx;
+  color: var(--ink-soft);
+  font-size: 23rpx;
+  line-height: 1.55;
+}
+
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 22rpx;
+}
+
+.choice-chip {
+  padding: 15rpx 19rpx;
+  border: 2rpx solid rgba(36, 71, 94, 0.12);
+  border-radius: 18rpx;
+  color: var(--ink-soft);
+  font-size: 24rpx;
+  font-weight: 700;
+  background: #fff;
+}
+
+.choice-chip--active {
+  border-color: rgba(185, 82, 52, 0.42);
+  color: var(--terracotta);
+  background: var(--terracotta-soft);
+}
+
+.action-primary,
+.action-secondary,
+.action-quiet {
+  min-height: 92rpx;
+  border-radius: 24rpx;
+  font-size: 29rpx;
+  font-weight: 800;
+  line-height: 92rpx;
+}
+
+.action-primary {
+  color: #fff;
+  background: var(--terracotta);
+  box-shadow: 0 14rpx 28rpx rgba(185, 82, 52, 0.22);
+}
+
+.action-secondary {
+  color: var(--ink);
+  border: 2rpx solid rgba(36, 71, 94, 0.14);
+  background: #fff;
+}
+
+.action-quiet {
+  color: var(--forest);
+  background: transparent;
+}
+
+.progress-bar {
+  height: 12rpx;
+  overflow: hidden;
+  border-radius: 99rpx;
+  background: rgba(72, 111, 89, 0.12);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--forest);
+}

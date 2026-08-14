@@ -1,0 +1,63 @@
+<scroll-view class="create-page" scroll-y="{{true}}">
+  <view class="page-shell">
+    <view class="create-heading">
+      <text class="page-kicker">01 · 发起人设置</text>
+      <text class="page-title">先定义这次，{{'\n'}}怎样算“合适”。</text>
+      <text class="page-description">地点由系统综合大家的出发区域与偏好推荐；发起人仍可随时改选最终地点。</text>
+    </view>
+
+    <view class="section-card">
+      <text class="section-label">这次聚会叫什么？</text>
+      <input class="meeting-name-input" value="{{meetingName}}" maxlength="24" bindinput="onNameInput" placeholder="例如：周五广佛小聚" />
+    </view>
+
+    <view class="section-card">
+      <text class="section-label">预计几人参与</text>
+      <text class="section-note">未填齐前会持续显示暂定推荐，并清楚标记待填写人数。</text>
+      <view class="choice-row">
+        <view
+          wx:for="{{memberOptions}}"
+          wx:key="*this"
+          class="choice-chip {{expectedMembers === item ? 'choice-chip--active' : ''}}"
+          data-value="{{item}}"
+          bindtap="onMemberCountChange"
+        >{{item}} 人</view>
+      </view>
+    </view>
+
+    <view class="section-card">
+      <text class="section-label">推荐优先看什么？</text>
+      <view class="strategy-list">
+        <view
+          wx:for="{{strategyOptions}}"
+          wx:key="value"
+          class="strategy-option {{strategy === item.value ? 'strategy-option--active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onStrategyChange"
+        >
+          <view class="strategy-dot"></view>
+          <view class="strategy-copy">
+            <text class="strategy-name">{{item.label}}</text>
+            <text class="strategy-description">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-card">
+      <text class="section-label">最远通勤上限</text>
+      <text class="section-note">超出上限的候选会保留展示，并明确提示影响。</text>
+      <view class="choice-row">
+        <view
+          wx:for="{{commuteCapOptions}}"
+          wx:key="value"
+          class="choice-chip {{commuteCap === item.value ? 'choice-chip--active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onCommuteCapChange"
+        >{{item.label}}</view>
+      </view>
+    </view>
+
+    <button class="action-primary continue-button" bindtap="onContinue">生成邀请链接</button>
+  </view>
+</scroll-view>

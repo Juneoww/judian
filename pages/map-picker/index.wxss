@@ -1,0 +1,131 @@
+/**
+ * 功能:
+ *   提供更大地图与站点备选清单的专注选点体验。
+ * 实现:
+ *   用地图下方的当前选择摘要和可滚动站点列表补充直接地图点按。
+ * 输入:
+ *   pages/map-picker/index.wxml 的选中状态类。
+ * 输出:
+ *   本页局部视觉效果；不产生脚本或网络副作用。
+ * 依赖:
+ *   微信小程序 WXSS、app.wxss 和 city-map 组件样式。
+ * 用法:
+ *   由 pages/map-picker/index.wxml 自动加载。
+ */
+
+.picker-page {
+  height: 100vh;
+  background: var(--canvas);
+}
+
+.picker-shell {
+  padding-bottom: 84rpx;
+}
+
+.picker-heading {
+  padding: 8rpx 4rpx 0;
+}
+
+.picker-map {
+  margin-top: 24rpx;
+}
+
+.selected-summary {
+  margin-top: 18rpx;
+  padding: 22rpx;
+  border-radius: 22rpx;
+  background: var(--terracotta-soft);
+}
+
+.selected-summary-label,
+.selected-summary-name,
+.selected-summary-note {
+  display: block;
+}
+
+.selected-summary-label {
+  color: var(--terracotta);
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+
+.selected-summary-name {
+  margin-top: 7rpx;
+  color: var(--ink);
+  font-size: 34rpx;
+  font-weight: 800;
+}
+
+.selected-summary-note {
+  margin-top: 5rpx;
+  color: var(--ink-soft);
+  font-size: 22rpx;
+}
+
+.station-list {
+  margin-top: 22rpx;
+  overflow: hidden;
+  border: 2rpx solid rgba(36, 71, 94, 0.08);
+  border-radius: 24rpx;
+  background: #fffdf8;
+}
+
+.station-row {
+  display: flex;
+  align-items: center;
+  min-height: 92rpx;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid rgba(36, 71, 94, 0.08);
+}
+
+.station-row:last-child {
+  border-bottom: 0;
+}
+
+.station-row--selected {
+  background: #fff8f3;
+}
+
+.station-row-dot {
+  width: 15rpx;
+  height: 15rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+  background: #2d7185;
+}
+
+.station-row--selected .station-row-dot {
+  background: var(--terracotta);
+}
+
+.station-row-copy {
+  flex: 1;
+}
+
+.station-row-name,
+.station-row-area {
+  display: block;
+}
+
+.station-row-name {
+  color: var(--ink);
+  font-size: 26rpx;
+  font-weight: 800;
+}
+
+.station-row-area {
+  margin-top: 3rpx;
+  color: var(--ink-soft);
+  font-size: 21rpx;
+}
+
+.station-row-selected {
+  color: var(--terracotta);
+  font-size: 21rpx;
+  font-weight: 800;
+}
+
+.picker-confirm {
+  margin-top: 26rpx;
+}

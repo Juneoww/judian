@@ -1,0 +1,27 @@
+<view class="home-page">
+  <view class="hero">
+    <text class="eyebrow">Guangzhou · Foshan</text>
+    <text class="title">下一次会合，{{'\n'}}从一个好地点开始。</text>
+    <text class="description">综合地铁通勤、换乘和商圈氛围，为大家推荐更适合碰面的站点。</text>
+  </view>
+
+  <view class="map-preview" aria-label="广佛会合地图示意">
+    <view class="map-sun"></view>
+    <view class="map-line line-main"></view>
+    <view class="map-line line-branch"></view>
+    <view class="map-pin pin-west">黄沙</view>
+    <view class="map-pin pin-center">祖庙</view>
+    <view class="map-pin pin-east">客村</view>
+  </view>
+
+  <view class="actions">
+    <button class="primary-action" bindtap="onStartMeeting">发起一场聚会</button>
+    <button class="secondary-action" bindtap="onFillLocation">通过邀请链接填写位置</button>
+    <text class="history-link" bindtap="onOpenHistory">查看本机历史会合</text>
+  </view>
+
+  <view class="meeting-note">
+    <text class="meeting-label">当前演示会合</text>
+    <text class="meeting-id">{{activeMeetingId}}</text>
+  </view>
+</view>
